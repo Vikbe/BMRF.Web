@@ -1,0 +1,29 @@
+﻿@page "/rules"
+
+@inject HttpClient Http
+
+<h1>Rules</h1>
+
+
+@if (rules == null) {
+    <p><em>Loading...</em></p>
+}
+else {
+  
+    <ol>
+        @foreach (var rule in rules) {
+            <li>@rule</li>
+        }
+    </ol>     
+          
+      
+}
+
+@functions {
+string[] rules;
+
+protected override async Task OnInitAsync()
+{
+    rules = await Http.GetJsonAsync<string[]>("api/SampleData/GetRules");
+}
+}

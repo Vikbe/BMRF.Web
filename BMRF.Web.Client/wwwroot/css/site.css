@@ -11,10 +11,12 @@ app {
 }
 
 .top-row {
-    height: 3.5rem;
+    height: 5rem;
     display: flex;
-    align-items: center;
+    align-items: center; 
+    
 }
+
 
 .main {
     flex: 1;
@@ -26,7 +28,7 @@ app {
     }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(52, 44, 44) 0%, #5F5C60 70%);
 }
 
     .sidebar .top-row {

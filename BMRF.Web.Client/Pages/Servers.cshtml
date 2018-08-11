@@ -1,0 +1,45 @@
+﻿@using BMRF.WEB.Shared
+@page "/servers"
+@inject HttpClient Http
+
+<h1>Game servers</h1>
+
+<p>example server page.</p>
+
+@if (gameservers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Name</th>
+                <th>Count</th>
+                <th>Ping</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var server in gameservers)
+            {
+                <tr>
+                    <td>@server.Game</td>
+                    <td>@server.Name</td>
+                    <td>@server.PlayerCount.ToString() / @server.PlayerCap</td>
+                    <td>0</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@functions {
+    GameServer[] gameservers;
+
+    protected override async Task OnInitAsync()
+    {
+        gameservers = await Http.GetJsonAsync<GameServer[]>("api/SampleData/GetServers");
+    }
+}
